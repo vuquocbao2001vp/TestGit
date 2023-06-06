@@ -19,3 +19,4 @@ def get_different_elements first_arr, second_arr
     return first_arr - second_arr
 end
 puts get_different_elements(a, b).inspect
+puts "ok"
