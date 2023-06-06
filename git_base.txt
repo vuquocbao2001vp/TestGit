@@ -1,0 +1,53 @@
+1. git rebase 
+	. git rebase dùng để gắn nhánh con vào nhánh gốc sau khi hoàn thành -> dễ theo dõi
+	. -> các commit sẽ được thêm vào nhánh gốc theo thứ tự 
+	. chỉ nên gắn nhánh con vào nhánh gốc, ko làm ngược lại
+	. điểm khác với merge là rebase ghi lại commit của nhánh con, merge thì ko
+
+2. git basic workflow
+	. có 3 phần chính trong git là file chứa code, index của file, HEAD khi commit file
+	. git repo - virtual storage, cho phép lưu các version của dự án, truy cập khi cần
+	. tạo một repo - git init
+	. clone một dự án mới - git clone link_to_project_in_git
+Luồng theo dõi file trong repo:
+	untracked -> add the file -> unmodified -> edit the file -> modified -> staged
+	-> commit -> unmodified -> remove the file -> untracked
+
+Để track file -> add file đó vào repo == git add file_name (or git add .)
+check status == git status
+nếu muốn unstage file vừa được add == git reset HEAD file_name
+
+nếu sửa file đã được add trước đó mà chưa git add lại thì repo vẫn lưu "ảnh" trước đó
+-> cần add lại file đó để stage những thay đổi
+
+luồng khi push file vào repo:
+	. git add file_name -> git commit -m "your commit" -> git push (nếu chưa có nhánh đó ở repo trên git thì git push --set-upstream origin branch_name )
+(thêm -a ở git commit để bỏ qua git add nếu chỉ sửa các file đã được staged)
+	
+Nếu muốn bỏ qua file trong dự án khi push lên git (file .env, ...) cho nó vào .gitignore
+
+Nếu muốn xóa file git rm --cached file_name để xóa và không theo dõi file đó nữa
+
+Nếu muốn xem commit history == git log
+
+Nếu commit lần thứ 2 trở đi == git commit --amend 
+
+Working with remote 
+	. show remote == git remoet -v
+	. add remote == git remote add link_to_remote
+	. fetch remote == git fetch remote_name
+
+3. GIT TAG
+	.Tag là chức năng đặt tên, một khi commit đuọc tạo tag thì  nó không thể thay đổi nữa - thường dùng cho release dự án theo các version
+	. có 2 loại tag là lightweight - như index của commit, lưu dạng bảng băm, hai là annotated - lưu cả tên tác giả, message cho tag đó 
+	. các lệnh thông dụng với tag:
+		. sửa tag == git tag -a -f tag_id commit_id
+		. xóa tag == git tag -d tag_id
+		. nếu tag đó đã được push ta cần xóa tag từ remote == git push origin tag :tag_id
+		. sau khi handle push nó lên lại repo == git push --tags
+		
+		
+4. GIT BRANCH
+	. create new branch == git branch branch_name họăc git checkout -b branch_name
+	. switch branch == git checkout branch_name
+	
