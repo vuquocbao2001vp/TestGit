@@ -1,0 +1,33 @@
+map - each - method with ! - const in Ruby - collect - select
+
+map vs each : 
+	. map thực thi các câu lệnh trong block và trả về mảng mới - mảng cũ không bị ảnh hưởng
+	. each - chỉ thực thi các câu lệnh trong block, mảng trả về vẫn là mảng ban đầu
+	=> dùng map khi muốn một mảng mới từ mảng cũ - dùng each khi muốn lấy từng phần tử của mảng để thực thi lệnh nào đó (map cũng có thể dùng như each)
+	
+map - collect: khác  mỗi tên 
+
+method with ! --> tác động lên đối tượng ban đầu chứ không tạo đối tượng mới
+
+select == filters
+
+const nếu gán nhiều lần thì báo lỗi - PHP báo nhiều lần thì lấy giá trị sau cuối được gán - không khác gì biến à?
+
+
+GIT cơ bản:
+- HEAD trong git: là một tham chiếu đến commit hiện tại trong cây commit
+
+Khác biệt giữa merge và rebase
+	. merge: gộp commit giữa hai nhánh và giữ lại cả hai nhán đó, tạo commit khi merge -> biết thời điểm merge
+	. rebase: di chuyển commit từ nhánh này sang nhánh khác, không tạo commit khi rebase -> ko biết thời điểm
+
+Luồng làm việc tại SUN*
+1. fork -> tạo một bản sao của dự án trên git của mình
+2. clone nó về local - máy tính cá nhân
+3. add remote cho nó với tên là sun (không phải origin)
+4. checkout từ nhánh master một nhánh mới
+5. thực hiện các yêu cầu của dự án - (tạo api, tạo một trang hoặc một component)
+6. add và commit các thay đổi
+7. rebase các commit vừa rồi vào nhánh master của git cá nhân (repo của git cá nhân chỉ có 1 nhánh là master sau khi rebase)
+8. push upstream nhánh từ local của mình lên git của công ty - git của cty sẽ có thêm một nhánh mới là nhánh mà ình vừa tạo ra
+9. chờ leader merge hoặc rebase nhánh đó -> trên local quay lại nhánh master và pull code từ repo của cty về
